@@ -2,10 +2,10 @@
   "name": "api_controlacademico",
   "version": "1.0.0",
   "description": "Practica supervisada #2",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "script": "node app.js"
+    "script": "node index.js"
   },
   "author": "Cesar Andre",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "depd": "^2.0.0",
     "dotenv": "^16.4.4",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
