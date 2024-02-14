@@ -5,13 +5,13 @@ const cursoSchema = new Schema({
         type: String,
         require: [true, 'El nombre es obligatorio']
     },
-    maestro: {
-        type: String, 
+    Profesor: {
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'Usuario',
         require: [true, 'Campo obligatorio']
     },
     alumno: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
         require: [true, 'Campo obligatorio']
     }
