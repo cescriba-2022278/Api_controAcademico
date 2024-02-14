@@ -1,6 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/usuarios');
-const { response } = require('express');
+const { response, request } = require('express');
 
 const registroGet = async (req, res = response) => {
     const {limite, desde} = req.query;
