@@ -47,7 +47,7 @@ router.delete(
     "/:id",
     [   
         validarJWT,
-        tieneRolAutorizado('ADMIN_ROLE','SUPER_ROLE'),
+        tieneRolAutorizado('esTeacherRole','SUPER_ROLE'),
         check('id', 'No es un id válido').isMongoId(),
         check('id').custom(existeUsuarioById),
         validarCampos
