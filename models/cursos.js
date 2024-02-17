@@ -1,20 +1,33 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const cursoSchema = new Schema({
+const CursoSchema = Schema({
     nombre:{
         type: String,
-        require: [true, 'El nombre es obligatorio']
+        required: [true, 'El nombre del curso es obligatorio']
     },
-    Profesor: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Usuario',
-        require: [true, 'Campo obligatorio']
+    profesor:{
+        type: String,
+        required: [true, 'El nombre del instructor es obligatorio']
     },
-    alumno: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario',
-        require: [true, 'Campo obligatorio']
+    role:{
+        type: String,
+        require: true,
+        enum: ["TEACHER_ROLE", "STUDENT_ROLE"]
+    },
+    descripcion:{
+        type: String,
+        required: [true, 'La descripción del curso es obligatoria']
+    },
+    estado:{
+        type: Boolean,
+        default: true
     }
 });
 
-module.exports = mongoose.model('Curso', cursoSchema);
+CursoSchema.methods.toJSON = function() {
+    const { __v, profesor, _id, ...curso } = this.toObject();
+    curso.uid = _id;
+    return curso;
+};
+
+module.exports = model('Curso', CursoSchema);

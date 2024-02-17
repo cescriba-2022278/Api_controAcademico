@@ -6,7 +6,9 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        this.usuarioPath = '/api/usuarios';
+        this.authPath = '/api/auth';
+        this.alumnoPath = '/api/alumnos';
+        this.profesorPath = '/api/profesores';
 
         this.conectarDB();
         this.middlewares();
@@ -24,7 +26,9 @@ class Server{
     }
 
     routes(){
-        this.app.use(this.usuarioPath, require('../routes/user.routes'));
+        this.app.use(this.authPath, require('../routes/auth.routes'));
+        this.app.use(this.alumnoPath, require('../routes/alumno.routes'));
+        this.app.use(this.profesorPath, require('../routes/profesor.routes'));
     }
 
     listen(){
