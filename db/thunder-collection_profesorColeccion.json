@@ -1,0 +1,100 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "profesorColeccion",
+    "dateExported": "2024-02-17T16:52:06.398Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "02f8c763-e0b6-4b54-8dd9-e3676d4a1738",
+            "colId": "9c3bb730-0d60-4001-b124-d1f3e10760d9",
+            "containerId": "",
+            "name": "post profesor",
+            "url": "http://localhost:3000/api/profesores",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-17T05:37:03.049Z",
+            "modified": "2024-02-17T16:33:00.603Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"ProfesorTest15\",\n  \"curso\": \"curso15\",\n  \"correo\": \"profesorTest15@gmail.com\",\n  \"password\": \"123456\",\n  \"role\": \"TEACHER_ROLE\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "899e3192-44f9-4e29-9c29-cb5b3e001626",
+            "colId": "9c3bb730-0d60-4001-b124-d1f3e10760d9",
+            "containerId": "",
+            "name": "get profesor",
+            "url": "http://localhost:3000/api/profesores?limite=5&desde=5",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-17T16:31:22.532Z",
+            "modified": "2024-02-17T16:33:23.089Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "limite",
+                    "value": "5",
+                    "isPath": false
+                },
+                {
+                    "name": "desde",
+                    "value": "5",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "55878466-0cf8-4f6f-9ad7-971acb7c106a",
+            "colId": "9c3bb730-0d60-4001-b124-d1f3e10760d9",
+            "containerId": "",
+            "name": "Get profesor Id",
+            "url": "http://localhost:3000/api/profesores/65d0df91e434a04cbbfd7a7a",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-17T16:33:52.319Z",
+            "modified": "2024-02-17T16:34:25.297Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8473971d-da8a-45d0-87d8-bc1dc11224f5",
+            "colId": "9c3bb730-0d60-4001-b124-d1f3e10760d9",
+            "containerId": "",
+            "name": "put profesor",
+            "url": "http://localhost:3000/api/profesores/65d0df10e434a04cbbfd7a5f",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-17T16:34:40.844Z",
+            "modified": "2024-02-17T16:37:01.393Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Braulio Echeverria\",\n  \"curso\": \"Informatica III\",\n  \"correo\": \"becheverria@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4416850b-cf81-4477-ab38-a25d209400cb",
+            "colId": "9c3bb730-0d60-4001-b124-d1f3e10760d9",
+            "containerId": "",
+            "name": "delete profesor",
+            "url": "http://localhost:3000/api/profesores/65d0df9ae434a04cbbfd7a7d",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-17T16:38:12.687Z",
+            "modified": "2024-02-17T16:38:44.286Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

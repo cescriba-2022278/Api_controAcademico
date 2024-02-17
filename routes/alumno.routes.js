@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { esTeacherRole, tieneRolAutorizado } = require('../middlewares/validar-roles');
+const { esAlumnoRole, tieneRolAutorizado } = require('../middlewares/validar-roles');
 
 const { 
     alumnosPost,
@@ -50,8 +50,6 @@ router.post(
 router.delete(
     "/:id",
     [   
-        validarJWT,
-        tieneRolAutorizado('STUDENT_ROLE', "TEACHER_ROLE"),
         check('id', 'No es un id válido').isMongoId(),
         check('id').custom(alumnoExisteById),
         validarCampos

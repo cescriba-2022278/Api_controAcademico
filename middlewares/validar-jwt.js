@@ -26,9 +26,9 @@ const validarJWT = async (req = request, res = response, next) => {
             });
         }
 
-        const usuario = await usuarioModel.findById(uid);
+        const profesor = await usuarioModel.findById(uid);
 
-        if (!usuario) {
+        if (!profesor) {
             return res.status(401).json({
                 msg: "Usuario no existe en la base de datos"
             });
@@ -40,7 +40,7 @@ const validarJWT = async (req = request, res = response, next) => {
             });
         }
 
-        req.usuario = usuario;
+        req.profesor = profesor;
         next();
 
     } catch (e) {

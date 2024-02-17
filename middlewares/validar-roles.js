@@ -1,13 +1,30 @@
 const { response } = require("express");
 
-const esTeacherRole = (req, res, next) => {
-    if (!req.usuario) {
+const esAlumnoRole = (req, res, next) => {
+    if (!req.alumno) {
         return res.status(500).json({
             msg: "Se desea validar un usuario sin validar token primero"
         });
     }
 
-    const { role, nombre } = req.usuario;
+    const { role, nombre } = req.alumno;
+
+    if (role !== "STUDENT_ROLE") {
+        return res.status(401).json({
+            msg: `${nombre} no es un alumno, no puede usar este endpoint`
+        });
+    };
+    next();
+};
+
+const esTeacherRole = (req, res, next) => {
+    if (!req.profesor) {
+        return res.status(500).json({
+            msg: "Se desea validar un usuario sin validar token primero"
+        });
+    }
+
+    const { role, nombre } = req.profesor;
 
     if (role !== "TEACHER_ROLE") {
         return res.status(401).json({
@@ -19,7 +36,7 @@ const esTeacherRole = (req, res, next) => {
 
 const tieneRolAutorizado = (...roles) => {
     return (req = request, res = response, next) => {
-        if (!req.usuario) {
+        if (!req.alumno, !req.profesor) {
             return res.status(500).json({
                 msg: "Se desea validar un usuario sin validar token primero"
             });
@@ -36,5 +53,6 @@ const tieneRolAutorizado = (...roles) => {
 
 module.exports = {
     esTeacherRole,
+    esAlumnoRole,
     tieneRolAutorizado
 };

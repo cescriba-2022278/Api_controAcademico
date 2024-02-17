@@ -60,7 +60,7 @@ const putAlumno = async (req, res = response) => {
 const alumnosDelete = async (req, res) => {
     const { id } = req.params;
 
-    const alumno = await Alumno.findByIdAndUpdate(id, { estado: false });
+    const alumno = await Alumno.findByIdAndUpdate(id, { estado: true });
 
     if (!alumno) {
         return res.status(404).json({ 
@@ -78,10 +78,10 @@ const alumnosPost = async (req, res) => {
     const { nombre, curso, correo, password, carne, role } = req.body;
     const alumno = new Alumno({ nombre, curso, correo, password, carne, role });
 
-    const cantidadCursos = await Alumno.countDocuments({ curso: alumno.curso });
-    if (cantidadCursos >= 3) {
+    const cursosDelAlumno = await Alumno.findOne({ correo }, 'cursos');
+    if (cursosDelAlumno && cursosDelAlumno.cursos.length >= 3) {
         return res.status(400).json({ 
-            msg: 'El alumno ya está asociado al máximo de cursos permitidos' 
+            msg: 'El alumno ya está inscrito en 3 cursos.' 
         });
     }
 
@@ -89,11 +89,12 @@ const alumnosPost = async (req, res) => {
     alumno.password = bcryptjs.hashSync(password, salt);
 
     await alumno.save();
-
     res.status(201).json({ 
         alumno 
     });
 }
+
+
 
 module.exports = {
     alumnosPost,
